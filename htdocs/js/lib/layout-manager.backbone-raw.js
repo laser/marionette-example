@@ -15,7 +15,6 @@
     RawLayoutManagerView.prototype.className = "layout-manager";
 
     RawLayoutManagerView.prototype.initialize = function() {
-      this.activeContentView = new window.HomePageView();
       return this.regionEls = {};
     };
 
@@ -35,30 +34,41 @@
         "content": this.$el.find(".region.content")
       };
       this.regionEls.navigation.append(new window.SidebarView().render().$el);
-      this.regionEls.content.append(this.activeContentView.render().$el);
+      this.showHome();
       return this;
     };
 
     RawLayoutManagerView.prototype.swapContentView = function(ViewConstructor) {
-      this.activeContentView.remove();
+      var _ref1;
+
+      if ((_ref1 = this.activeContentView) != null) {
+        _ref1.remove();
+      }
       this.activeContentView = new ViewConstructor();
       return this.regionEls.content.append(this.activeContentView.render().$el);
     };
 
-    RawLayoutManagerView.prototype.showRawContacts = function() {
+    RawLayoutManagerView.prototype.showContacts = function() {
       return this.swapContentView(window.ContactsView);
     };
 
-    RawLayoutManagerView.prototype.showRawProfile = function() {
+    RawLayoutManagerView.prototype.showProfile = function() {
       return this.swapContentView(window.ProfileView);
     };
 
-    RawLayoutManagerView.prototype.showRawHome = function() {
+    RawLayoutManagerView.prototype.showHome = function() {
       return this.swapContentView(window.HomePageView);
     };
 
     return RawLayoutManagerView;
 
   })(Backbone.View);
+
+  jQuery(document).ready(function() {
+    window.router = new window.Workspace();
+    window.layoutManager = new window.RawLayoutManagerView();
+    jQuery("#demo").append(window.layoutManager.render().$el);
+    return Backbone.history.start();
+  });
 
 }).call(this);

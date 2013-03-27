@@ -13,21 +13,21 @@
     }
 
     Workspace.prototype.routes = {
-      "raw/home": "showRawHome",
-      "raw/profile": "showRawProfile",
-      "raw/contacts": "showRawContacts"
+      "home": "showHome",
+      "profile": "showProfile",
+      "contacts": "showContacts"
     };
 
-    Workspace.prototype.showRawContacts = function() {
-      return window.layoutManager.showRawContacts();
+    Workspace.prototype.showContacts = function() {
+      return window.layoutManager.showContacts();
     };
 
-    Workspace.prototype.showRawHome = function() {
-      return window.layoutManager.showRawHome();
+    Workspace.prototype.showHome = function() {
+      return window.layoutManager.showHome();
     };
 
-    Workspace.prototype.showRawProfile = function() {
-      return window.layoutManager.showRawProfile();
+    Workspace.prototype.showProfile = function() {
+      return window.layoutManager.showProfile();
     };
 
     return Workspace;
@@ -141,9 +141,9 @@
 
       return t = '\
     <h2>bunch of links here</h2>\
-    <a href="#raw/home">Home</a>\
-    <a href="#raw/profile">Your Profile</a>\
-    <a href="#raw/contacts">Your Contacts</a>\
+    <a href="#home">Home</a>\
+    <a href="#profile">Your Profile</a>\
+    <a href="#contacts">Your Contacts</a>\
     ';
     })();
 
@@ -155,12 +155,5 @@
     return SidebarView;
 
   })(Backbone.View);
-
-  jQuery(document).ready(function() {
-    window.router = new window.Workspace();
-    window.layoutManager = new window.RawLayoutManagerView();
-    jQuery("#raw-layout-manager").append(window.layoutManager.render().$el);
-    return Backbone.history.start();
-  });
 
 }).call(this);

@@ -1,14 +1,14 @@
 class window.Workspace extends Backbone.Router
   routes:
-    "raw/home": "showRawHome"
-    "raw/profile": "showRawProfile"
-    "raw/contacts": "showRawContacts"
-  showRawContacts: ->
-    window.layoutManager.showRawContacts()
-  showRawHome: ->
-    window.layoutManager.showRawHome()
-  showRawProfile: ->
-    window.layoutManager.showRawProfile()
+    "home"     : "showHome"
+    "profile"  : "showProfile"
+    "contacts" : "showContacts"
+  showContacts: ->
+    window.layoutManager.showContacts()
+  showHome: ->
+    window.layoutManager.showHome()
+  showProfile: ->
+    window.layoutManager.showProfile()
 
 class window.ProfileView extends Backbone.View
   class: "profile"
@@ -56,18 +56,10 @@ class window.SidebarView extends Backbone.View
   template: do ->
     t = '
     <h2>bunch of links here</h2>
-    <a href="#raw/home">Home</a>
-    <a href="#raw/profile">Your Profile</a>
-    <a href="#raw/contacts">Your Contacts</a>
+    <a href="#home">Home</a>
+    <a href="#profile">Your Profile</a>
+    <a href="#contacts">Your Contacts</a>
     '
   render: ->
     @$el.append this.template
     return @
-
-jQuery(document)
-  .ready ->
-    window.router        = new window.Workspace()
-    window.layoutManager = new window.RawLayoutManagerView()
-    jQuery("#raw-layout-manager")
-      .append window.layoutManager.render().$el
-    Backbone.history.start()
