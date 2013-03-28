@@ -8,7 +8,9 @@ examples
 
 1. a layout manager
 1. a simple table with header and rows
+1. event binding-cleanup
+1. templateHelpers merging
 
 ### notes
 
-1. to run tests, simply "make test"
+1. to compile .coffee files, run "make coffee-compile"
