@@ -8,8 +8,7 @@ examples
 
 1. a layout manager
 1. a paginated data table
-1. event binding-cleanup
-1. templateHelpers merging
+1. keeping logic out of view template w/templateHelpers
 
 ### notes
 
