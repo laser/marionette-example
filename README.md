@@ -7,7 +7,7 @@ examples
 --------
 
 1. a layout manager
-1. a simple table with header and rows
+1. a paginated data table
 1. event binding-cleanup
 1. templateHelpers merging
 
