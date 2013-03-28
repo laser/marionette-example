@@ -63,3 +63,11 @@ class window.SidebarView extends Backbone.View
   render: ->
     @$el.append this.template
     return @
+
+jQuery(document)
+  .ready ->
+    window.router        = new window.Workspace()
+    window.layoutManager = new window.LayoutManager()
+    jQuery("#demo")
+      .append window.layoutManager.render().$el
+    Backbone.history.start()

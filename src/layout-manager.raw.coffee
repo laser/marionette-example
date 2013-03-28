@@ -1,4 +1,4 @@
-class window.RawLayoutManagerView extends Backbone.View
+class window.LayoutManager extends Backbone.View
   className: "layout-manager"
   initialize: ->
     @regionEls = {}
@@ -26,10 +26,3 @@ class window.RawLayoutManagerView extends Backbone.View
   showHome: ->
     @swapContentView window.HomePageView
 
-jQuery(document)
-  .ready ->
-    window.router        = new window.Workspace()
-    window.layoutManager = new window.RawLayoutManagerView()
-    jQuery("#demo")
-      .append window.layoutManager.render().$el
-    Backbone.history.start()

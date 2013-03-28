@@ -1,0 +1,30 @@
+/* table demo */
+
+table {
+  border: 1px solid gray;
+}
+
+table td {
+  border: 1px solid lightGray;
+}
+
+.paginator a.active {
+  font-size: 150%;
+}
+
+/* layout manager demo */
+
+.layout-manager {
+  overflow: auto;
+}
+
+.layout-manager .sidebar {
+  background-color: lightSkyBlue;
+  float: left;
+  margin-right: 20px;
+  width: 200px;
+}
+
+.sidebar a {
+  display: block;
+}

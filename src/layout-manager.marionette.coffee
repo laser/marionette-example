@@ -1,7 +1,4 @@
-Backbone.Marionette.Renderer.render = (template, data) ->
-  return _.template(template, data)
-
-window.MarionetteLayoutManager = Backbone.Marionette.Layout.extend
+window.LayoutManager = Backbone.Marionette.Layout.extend
   className: "layout-manager"
   template: do ->
     t = '
@@ -20,11 +17,3 @@ window.MarionetteLayoutManager = Backbone.Marionette.Layout.extend
     @content.show new window.ProfileView()
   showHome: ->
     @content.show new window.HomePageView()
-
-jQuery(document)
-  .ready ->
-    window.router        = new window.Workspace()
-    window.layoutManager = new window.MarionetteLayoutManager()
-    jQuery("#demo")
-      .append window.layoutManager.render().$el
-    Backbone.history.start()

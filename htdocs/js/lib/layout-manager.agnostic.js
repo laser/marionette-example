@@ -156,4 +156,11 @@
 
   })(Backbone.View);
 
+  jQuery(document).ready(function() {
+    window.router = new window.Workspace();
+    window.layoutManager = new window.LayoutManager();
+    jQuery("#demo").append(window.layoutManager.render().$el);
+    return Backbone.history.start();
+  });
+
 }).call(this);

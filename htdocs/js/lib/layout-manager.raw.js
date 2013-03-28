@@ -4,21 +4,21 @@
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  window.RawLayoutManagerView = (function(_super) {
-    __extends(RawLayoutManagerView, _super);
+  window.LayoutManager = (function(_super) {
+    __extends(LayoutManager, _super);
 
-    function RawLayoutManagerView() {
-      _ref = RawLayoutManagerView.__super__.constructor.apply(this, arguments);
+    function LayoutManager() {
+      _ref = LayoutManager.__super__.constructor.apply(this, arguments);
       return _ref;
     }
 
-    RawLayoutManagerView.prototype.className = "layout-manager";
+    LayoutManager.prototype.className = "layout-manager";
 
-    RawLayoutManagerView.prototype.initialize = function() {
+    LayoutManager.prototype.initialize = function() {
       return this.regionEls = {};
     };
 
-    RawLayoutManagerView.prototype.template = (function() {
+    LayoutManager.prototype.template = (function() {
       var t;
 
       return t = '\
@@ -27,7 +27,7 @@
     ';
     })();
 
-    RawLayoutManagerView.prototype.render = function() {
+    LayoutManager.prototype.render = function() {
       this.$el.append(this.template);
       this.regionEls = {
         "navigation": this.$el.find(".region.navigation"),
@@ -38,7 +38,7 @@
       return this;
     };
 
-    RawLayoutManagerView.prototype.swapContentView = function(ViewConstructor) {
+    LayoutManager.prototype.swapContentView = function(ViewConstructor) {
       var _ref1;
 
       if ((_ref1 = this.activeContentView) != null) {
@@ -48,27 +48,20 @@
       return this.regionEls.content.append(this.activeContentView.render().$el);
     };
 
-    RawLayoutManagerView.prototype.showContacts = function() {
+    LayoutManager.prototype.showContacts = function() {
       return this.swapContentView(window.ContactsView);
     };
 
-    RawLayoutManagerView.prototype.showProfile = function() {
+    LayoutManager.prototype.showProfile = function() {
       return this.swapContentView(window.ProfileView);
     };
 
-    RawLayoutManagerView.prototype.showHome = function() {
+    LayoutManager.prototype.showHome = function() {
       return this.swapContentView(window.HomePageView);
     };
 
-    return RawLayoutManagerView;
+    return LayoutManager;
 
   })(Backbone.View);
-
-  jQuery(document).ready(function() {
-    window.router = new window.Workspace();
-    window.layoutManager = new window.RawLayoutManagerView();
-    jQuery("#demo").append(window.layoutManager.render().$el);
-    return Backbone.history.start();
-  });
 
 }).call(this);
